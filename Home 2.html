@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubuntu Air Solutions - AC Installation & Repair</title>
+    <style>
+        :root {
+            --primary-blue: #0077cc;
+            --secondary-blue: #005fa3;
+            --light-blue: #e6f2ff;
+            --accent-blue: #003366;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 100px;
+        }
+
+        .logo-container {
+            position: relative;
+            height: 150px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 150px;
+            width: auto;
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+            nav ul li {
+                margin-left: 2rem;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: var(--accent-blue);
+                    font-weight: 600;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: var(--primary-blue);
+                    }
+
+        .hero {
+            background-color: var(--light-blue);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+            .hero h1 {
+                color: var(--accent-blue);
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                max-width: 800px;
+                margin: 0 auto 2rem;
+            }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: var(--secondary-blue);
+            }
+
+        .services {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--accent-blue);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+            .service-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            }
+
+        .service-img {
+            height: 0;
+            padding-bottom: 133.33%; /* 4:3 aspect ratio (inverse of 3:4) */
+            overflow: hidden;
+            position: relative;
+            background: #f5f5f5;
+        }
+
+            .service-img img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease-in-out;
+                transform-origin: center center;
+            }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.15);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+            .service-content h3 {
+                color: var(--primary-blue);
+                margin-top: 0;
+            }
+
+        .gallery {
+            padding: 4rem 0;
+            background-color: var(--light-blue);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 0;
+            padding-bottom: 75%; /* 4:3 aspect ratio for gallery images */
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            background: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+
+            .gallery-item:hover {
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            }
+
+            .gallery-item img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease-in-out;
+                transform-origin: center center;
+            }
+
+            .gallery-item:hover img {
+                transform: scale(1.15);
+            }
+
+        .contact {
+            padding: 4rem 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-blue);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+        }
+
+        footer {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+            .social-links a {
+                color: white;
+                margin: 0 0.5rem;
+                font-size: 1.5rem;
+            }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .logo-container {
+                height: 120px;
+            }
+
+            .logo {
+                height: 120px;
+                position: relative;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+                nav ul li {
+                    margin: 0 0.5rem;
+                }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="/Images/logo.png" alt="Ubuntu Air Solutions Logo" style="height:190px;" class="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Expert Air Conditioning Solutions</h1>
+            <p>Ubuntu Air Solutions provides professional installation, maintenance, and repair services for all your air conditioning and ventilation needs. Serving the community with reliable and efficient service.</p>
+            <a href="#contact" class="btn">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/Images/AC Installation.jpg" alt="AC Installation">
+                    </div>
+                    <div class="service-content">
+                        <h3>AC Installation</h3>
+                        <p>Professional installation of all types of air conditioning units, ensuring optimal performance and efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/Images/AC Repair.jpg" alt="AC Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>AC Repair</h3>
+                        <p>Fast and reliable repair services to get your air conditioning system back up and running.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/Images/Ventilation.jpg" alt="Ventilation Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Ventilation Services</h3>
+                        <p>Expert installation and repair of air vents and ductwork to improve your indoor air quality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/Images/WhatsApp Image 2025-05-27 at 20.21.26_f7fdd4f8.jpg" alt="AC Installation Project">
+                </div>
+                <div class="gallery-item">
+                    <img src="/Images/WhatsApp Image 2025-05-28 at 14.53.21_66556f6c.jpg" alt="Ventilation System">
+                </div>
+                <div class="gallery-item">
+                    <img src="/Images/WhatsApp Image 2025-05-28 at 09.35.17_64c4f248.jpg" alt="Commercial AC Unit">
+                </div>
+                <div class="gallery-item">
+                    <img src="/Images/AC installation 2.jpg" alt="Residential Installation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Phone:</strong> (081) 790 0894 or (060) 422 5030</p>
+                    <p><strong>Email:</strong> Ubuntuair.s@gmail.com</p>
+                    <p><strong>Address:</strong> 32 hugget street, Kempton park, Johannesburg, 1620</p>
+                    <p><strong>Hours:</strong> Everyday: 8AM-6PM</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone">
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="your-logo.png" alt="Ubuntu Air Solutions Logo" class="logo" style="height: 60px; margin-bottom: 1rem;">
+                <p>&copy; 2023 Ubuntu Air Solutions. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons (optional) -->
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+
+    <script>
+        // JavaScript for logo scaling and header fade
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('main-header');
+            const logo = document.querySelector('.logo');
+            const scrollPosition = window.scrollY;
+
+            // Scale down the logo as you scroll
+            if (scrollPosition > 0) {
+                const scale = Math.max(0.7, 1 - scrollPosition / 500);
+                logo.style.transform = `scale(${scale})`;
+
+                // Add slight fade to header
+                header.style.opacity = Math.max(0.9, 1 - scrollPosition / 1000);
+            } else {
+                logo.style.transform = 'scale(1)';
+                header.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>
