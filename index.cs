@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Ubuntu_Air_Solutions
 {
-    public class Home_2
+    public class index
     {
     }
 }
